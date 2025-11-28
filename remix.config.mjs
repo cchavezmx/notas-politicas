@@ -5,6 +5,8 @@ export default {
     v3_relativeSplatPath: true,
     v3_throwAbortReason: true
   },
+  server: './server.ts',
+  serverBuildPath: 'netlify/functions/server.mjs',
   serverModuleFormat: 'esm',
   ignoredRouteFiles: ['**/.*'],
   sourcemap: true,
