@@ -1,0 +1,53 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fiscalía autónoma</title>
+  <desc id="desc">Ilustración abstracta con bloques geométricos y líneas que representan equilibrio institucional.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="60%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.6"/>
+      <stop offset="70%" stop-color="#22d3ee" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#67e8f9"/>
+    </linearGradient>
+    <linearGradient id="sunset" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0.95"/>
+    </linearGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0v80" fill="none" stroke="#334155" stroke-width="1.5" opacity="0.35"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <circle cx="1320" cy="180" r="140" fill="url(#sunset)" opacity="0.9"/>
+  <rect x="160" y="220" width="360" height="460" rx="32" fill="#0b1224" stroke="#22d3ee" stroke-opacity="0.4" stroke-width="4"/>
+  <rect x="240" y="300" width="360" height="460" rx="32" fill="#0f172a" stroke="#fbbf24" stroke-opacity="0.45" stroke-width="3.5"/>
+  <rect x="480" y="180" width="460" height="520" rx="36" fill="#111827" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="5"/>
+  <rect x="620" y="280" width="420" height="340" rx="28" fill="url(#accent)" opacity="0.9"/>
+  <rect x="1040" y="260" width="260" height="420" rx="28" fill="#0b1224" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="4"/>
+  <g opacity="0.35" stroke="#e2e8f0" stroke-width="2">
+    <path d="M260 200c120 40 140 200 220 240s160-30 240 10 140 170 240 160 180-180 300-180" fill="none"/>
+    <path d="M280 640c80-40 140-10 200 20s120 60 200 10 160-50 240-20 140 120 220 120" fill="none"/>
+  </g>
+  <g fill="#e2e8f0" opacity="0.9">
+    <rect x="300" y="360" width="12" height="220" rx="6"/>
+    <rect x="350" y="340" width="12" height="240" rx="6"/>
+    <rect x="400" y="380" width="12" height="200" rx="6"/>
+    <rect x="450" y="320" width="12" height="260" rx="6"/>
+    <rect x="720" y="340" width="14" height="200" rx="7"/>
+    <rect x="770" y="320" width="14" height="220" rx="7"/>
+    <rect x="820" y="360" width="14" height="180" rx="7"/>
+    <rect x="870" y="300" width="14" height="240" rx="7"/>
+    <rect x="1150" y="320" width="12" height="220" rx="6"/>
+    <rect x="1200" y="360" width="12" height="180" rx="6"/>
+    <rect x="1250" y="300" width="12" height="240" rx="6"/>
+  </g>
+  <circle cx="340" cy="640" r="28" fill="#22d3ee" opacity="0.8"/>
+  <circle cx="900" cy="540" r="22" fill="#0ea5e9" opacity="0.9"/>
+  <circle cx="1240" cy="620" r="18" fill="#fbbf24" opacity="0.85"/>
+  <text x="200" y="160" fill="#e2e8f0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="0.06em">FISCALÍA AUTÓNOMA</text>
+  <text x="200" y="200" fill="#94a3b8" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="18" letter-spacing="0.04em">equilibrio, rendición y técnica</text>
+</svg>
