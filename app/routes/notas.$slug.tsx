@@ -3,6 +3,7 @@ import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { URL } from 'node:url';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getNoteBySlug } from '~/data/notas';
@@ -20,6 +21,22 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       markdown = await readFile(filePath, 'utf-8');
     } catch (error) {
       console.warn(`No se pudo leer el markdown ${filePath}`, error);
+      const origin = getBaseUrl(request);
+      if (origin) {
+        try {
+          // En plataformas serverless (Netlify), los archivos de /public no siempre están en el bundle,
+          // así que hacemos fetch directo a la URL pública del markdown.
+          const markdownUrl = new URL(note.markdownPath, origin).toString();
+          const res = await fetch(markdownUrl);
+          if (res.ok) {
+            markdown = await res.text();
+          } else {
+            console.warn(`Fetch de markdown falló ${markdownUrl} con status ${res.status}`);
+          }
+        } catch (fetchError) {
+          console.warn('No se pudo cargar el markdown via fetch', fetchError);
+        }
+      }
     }
   }
   const baseUrl = getBaseUrl(request);

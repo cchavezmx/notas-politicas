@@ -362,6 +362,7 @@ import { json as json2 } from "@remix-run/node";
 import { Link, useLoaderData as useLoaderData2 } from "@remix-run/react";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { URL as URL2 } from "node:url";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
@@ -376,6 +377,14 @@ var loader4 = async ({ params, request }) => {
       markdown = await readFile(filePath, "utf-8");
     } catch (error) {
       console.warn(`No se pudo leer el markdown ${filePath}`, error);
+      let origin = getBaseUrl(request);
+      if (origin)
+        try {
+          let markdownUrl = new URL2(note.markdownPath, origin).toString(), res = await fetch(markdownUrl);
+          res.ok ? markdown = await res.text() : console.warn(`Fetch de markdown fall\xF3 ${markdownUrl} con status ${res.status}`);
+        } catch (fetchError) {
+          console.warn("No se pudo cargar el markdown via fetch", fetchError);
+        }
     }
   }
   let baseUrl = getBaseUrl(request);
@@ -727,7 +736,7 @@ function IndexRoute() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-DFHEOIEW.js", imports: ["/build/_shared/chunk-SNGDJIJP.js", "/build/_shared/chunk-T36URGAI.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HNIBT6NZ.js", imports: ["/build/_shared/chunk-KPWQHS6G.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-ISHTGYCR.js", imports: ["/build/_shared/chunk-HBIA7STT.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/notas.$slug": { id: "routes/notas.$slug", parentId: "root", path: "notas/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/notas.$slug-UVC4CNCM.js", imports: ["/build/_shared/chunk-HBIA7STT.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/robots[.]txt": { id: "routes/robots[.]txt", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/robots[.]txt-NYG7XR3C.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/sitemap[.]xml": { id: "routes/sitemap[.]xml", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/sitemap[.]xml-M2KMNLZB.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "5cf66d89", hmr: void 0, url: "/build/manifest-5CF66D89.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-DFHEOIEW.js", imports: ["/build/_shared/chunk-SNGDJIJP.js", "/build/_shared/chunk-T36URGAI.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HNIBT6NZ.js", imports: ["/build/_shared/chunk-KPWQHS6G.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-ISHTGYCR.js", imports: ["/build/_shared/chunk-HBIA7STT.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/notas.$slug": { id: "routes/notas.$slug", parentId: "root", path: "notas/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/notas.$slug-D5TK35SP.js", imports: ["/build/_shared/chunk-HBIA7STT.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/robots[.]txt": { id: "routes/robots[.]txt", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/robots[.]txt-NYG7XR3C.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/sitemap[.]xml": { id: "routes/sitemap[.]xml", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/sitemap[.]xml-M2KMNLZB.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "0b5d4e43", hmr: void 0, url: "/build/manifest-0B5D4E43.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "production", assetsBuildDirectory = "public/build", future = { v3_fetcherPersist: !0, v3_relativeSplatPath: !0, v3_throwAbortReason: !0, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
